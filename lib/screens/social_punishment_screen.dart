@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/screens/social_punishment_viewer_screen.dart';
 
 class SocialPunishmentScreen extends StatefulWidget {
@@ -45,7 +46,7 @@ class _SocialPunishmentScreenState extends State<SocialPunishmentScreen> {
 
           return Scaffold(
             appBar: AppBar(
-              title: Text('Social Punishment'),
+              title: Text(Languages.of(context).social_punishment),
               backgroundColor: Color(0xffA42B2A),
             ),
             body: ListView(
@@ -67,25 +68,25 @@ class _SocialPunishmentScreenState extends State<SocialPunishmentScreen> {
 
                         items: [
                           DropdownMenuItem(
-                            child: Text("All"),
+                            child: Text(Languages.of(context).all),
                             value: 'All',
                           ),
                           DropdownMenuItem(
-                            child: Text("Artists"),
+                            child: Text(Languages.of(context).artists),
                             value: 'Artists',
                           ),
                           DropdownMenuItem(
-                              child: Text("Junta Related"),
+                              child: Text(Languages.of(context).junta_related),
                               value: "Junta Related"),
                           DropdownMenuItem(
-                              child: Text("Junta Supporters"),
+                              child: Text(Languages.of(context).junta_supporters),
                               value: "Junta Supporters"),
                           DropdownMenuItem(
-                            child: Text("Military Coup"),
+                            child: Text(Languages.of(context).military_coup),
                             value: "Military Coup",
                           ),
                           DropdownMenuItem(
-                            child: Text("Social Influencers"),
+                            child: Text(Languages.of(context).social_influencers),
                             value: "Social Influencers",
                           ),
                         ],

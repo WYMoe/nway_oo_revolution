@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/models/news_model.dart';
 import 'package:nway_oo_revolution/screens/photo_view_screen.dart';
 
@@ -57,7 +58,7 @@ class _NewsViewerScreenState extends State<NewsViewerScreen> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Nway Oo Revolution'),
+        title: Text(Languages.of(context).nway_oo_revolution),
         backgroundColor: Color(0xffA42B2A),
       ),
         body: SingleChildScrollView(

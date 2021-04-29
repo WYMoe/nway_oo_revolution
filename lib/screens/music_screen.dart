@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/models/cdm_help_model.dart';
 import 'package:nway_oo_revolution/screens/boycott_category_screen.dart';
 import 'package:nway_oo_revolution/screens/cdm_help_viewer_screen.dart';
@@ -64,7 +65,7 @@ class _MusicScreenState extends State<MusicScreen> {
 
           return Scaffold(
               appBar: AppBar(
-                title: Text('Music Playlist'),
+                title: Text(Languages.of(context).music_playlist),
                 backgroundColor: Color(0xffA42B2A),
               ),
               body: Container(

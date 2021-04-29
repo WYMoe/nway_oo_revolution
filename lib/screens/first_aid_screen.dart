@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/models/first_aid_model.dart';
 import 'package:nway_oo_revolution/models/news_model.dart';
 import 'package:nway_oo_revolution/screens/first_aid_viewer_screen.dart';
@@ -10,7 +11,7 @@ class FirstAidScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('First Aid'),
+        title: Text(Languages.of(context).first_aid),
         backgroundColor: Color(0xffA42B2A),
       ),
       body: Column(

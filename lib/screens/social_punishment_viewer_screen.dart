@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 
 class SocialPunishmentViewerScreen extends StatelessWidget {
   final String photo;
@@ -15,7 +16,7 @@ class SocialPunishmentViewerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:  AppBar(
-        title: Text('Social Punishment'),
+        title: Text(Languages.of(context).social_punishment),
         backgroundColor: Color(0xffA42B2A),
       ),
       body: SingleChildScrollView(

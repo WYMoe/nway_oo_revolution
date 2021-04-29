@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/screens/first_aid_screen.dart';
 import 'package:nway_oo_revolution/screens/safety_during_protest_screen.dart';
 import 'package:nway_oo_revolution/screens/way_to_fight_back_screen.dart';
@@ -9,7 +10,7 @@ class ProtestGuideScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Protest Guide'),
+        title: Text(Languages.of(context).protect_guide),
         backgroundColor: Color(0xffA42B2A),
       ),
       body: Column(
@@ -44,7 +45,7 @@ class ProtestGuideScreen extends StatelessWidget {
                       // Icon(Icons.add,
                       //   color: Colors.white,
                       //   size: MediaQuery.of(context).size.width*0.2,),
-                      Text('First Aid',style: TextStyle(
+                      Text(Languages.of(context).first_aid,style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.0,
                           fontWeight: FontWeight.w600),),
@@ -63,13 +64,13 @@ class ProtestGuideScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => SafetyDuringProtestScreen()));
               },
-              child: ProtestItem('Safety During Protest'))),
+              child: ProtestItem(Languages.of(context).safety_during_protest))),
           Expanded(child: TextButton( onPressed: (){
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => WayToFightBackScreen()));
-          },child: ProtestItem('Way to Fight Back'))),
+          },child: ProtestItem(Languages.of(context).way_to_fight_back))),
           Expanded(
             child: SizedBox(
               height: MediaQuery.of(context).size.height*0.2,

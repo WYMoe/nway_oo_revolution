@@ -2,36 +2,76 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:nway_oo_revolution/icon/bottom_navigation_icon.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/screens/app_drawer.dart';
-import 'package:nway_oo_revolution/screens/hero_screen.dart';
 import 'package:nway_oo_revolution/screens/info_screen.dart';
 import 'package:nway_oo_revolution/screens/knowledge_screen.dart';
 import 'package:nway_oo_revolution/screens/news_screen.dart';
 import 'package:nway_oo_revolution/screens/revolution_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'localization/localization_delegate.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
 
+  static void setLocale(BuildContext context, Locale newLocale) {
+    var state = context.findAncestorStateOfType<_MyAppState>();
+    state.setLocale(newLocale);
+  }
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _locale;
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title:'Nway Oo Revolution',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      locale: _locale,
       home: MyHomePage(),
+      supportedLocales: [
+        Locale('en', ''),
+        Locale('my', ''),
+        Locale('zh', '')
+      ],
+      localizationsDelegates: [
+        AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale?.languageCode == locale?.languageCode &&
+              supportedLocale?.countryCode == locale?.countryCode) {
+            return supportedLocale;
+          }
+        }
+        return supportedLocales?.first;
+      },
     );
+
   }
 }
 
@@ -49,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
   AudioPlayerState audioPlayerState = AudioPlayerState.PAUSED;
   AudioCache audioCache;
   String filePath = 'sound.mp3';
+
 
 
 
@@ -89,9 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: AppDrawer(
-
-      ),
+      drawer: AppDrawer(),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
@@ -153,6 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Icon(
               BottomNavigationIcon.news,
               color: Colors.white,
+
             ),
             Icon(BottomNavigationIcon.revolution, color: Colors.white),
             Icon(BottomNavigationIcon.mawkon, color: Colors.white),

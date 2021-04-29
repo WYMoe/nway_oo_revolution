@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/models/cdm_help_model.dart';
 import 'package:nway_oo_revolution/screens/cdm_help_viewer_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -47,7 +48,7 @@ class _CDMHelpScreenState extends State<CDMHelpScreen> {
 
           return Scaffold(
             appBar: AppBar(
-              title: Text('CDM Help'),
+              title: Text(Languages.of(context).cdm_helps),
               backgroundColor: Color(0xffA42B2A),
             ),
             body:Container(

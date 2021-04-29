@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/screens/boycott_screen.dart';
 import 'package:nway_oo_revolution/screens/cdm_help_screen.dart';
 import 'package:nway_oo_revolution/screens/music_screen.dart';
@@ -13,65 +14,13 @@ class RevolutionScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Expanded(
-          //   child: GridView.count(
-          //     crossAxisCount: 2,
-          //     childAspectRatio: 1.0,
-          //     crossAxisSpacing: 1.5,
-          //     mainAxisSpacing: 1.0,
-          //     shrinkWrap: true,
-          //     children: <Widget>[
-          //       MainButton(
-          //         mainButtonName: 'CDM Helps',
-          //         route: () {
-          //           Navigator.push(context,
-          //               MaterialPageRoute(builder: (context) {
-          //                 return CDMHelpScreen();
-          //               }));
-          //         },
-          //         image: 'cdm_help_ic',
-          //       ),
-          //       MainButton(
-          //         mainButtonName: 'Protest Guide',
-          //         route: () {
-          //           Navigator.push(context,
-          //               MaterialPageRoute(builder: (context) {
-          //                 return ProtestGuideScreen();
-          //               }));
-          //           // Navigator.push(context,
-          //           //     MaterialPageRoute(builder: (context) {
-          //           //       return SupplierHomePage();
-          //           //     }));
-          //         },
-          //         image: 'protest_guide_ic',
-          //       ),
-          //       MainButton(
-          //         mainButtonName: 'Social Punishment',
-          //         route: () {
-          //
-          //         },
-          //         image: 'social_punishment_ic',
-          //       ),
-          //       MainButton(
-          //         mainButtonName: 'Boycott',
-          //         route: () {
-          //           // Navigator.push(context,
-          //           //     MaterialPageRoute(builder: (context) {
-          //           //       return TotalSaleHomePage();
-          //           //     }));
-          //         },
-          //         image: 'boycott_ic',
-          //       ),
-          //     ],
-          //   ),
-          // ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
                   child: MainButton(
-                    mainButtonName: 'CDM Helps',
+                    mainButtonName: Languages.of(context).cdm_helps,
                     route: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
@@ -83,7 +32,7 @@ class RevolutionScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: MainButton(
-                    mainButtonName: 'Protest Guide',
+                    mainButtonName: Languages.of(context).protect_guide,
                     route: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
@@ -103,7 +52,7 @@ class RevolutionScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: MainButton(
-                    mainButtonName: 'Social Punishment',
+                    mainButtonName: Languages.of(context).social_punishment,
                     route: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
@@ -115,7 +64,7 @@ class RevolutionScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: MainButton(
-                    mainButtonName: 'Boycott',
+                    mainButtonName: Languages.of(context).boycott,
                     route: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
@@ -159,7 +108,7 @@ class RevolutionScreen extends StatelessWidget {
                         Expanded(
                           child: Center(
                             child: Text(
-                              'Music Playlist',
+                              Languages.of(context).music_playlist,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                  // color: Color(0xff1f456e),

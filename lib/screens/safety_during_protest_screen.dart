@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/screens/safety_during_protest_viewer_screen.dart';
 
 class SafetyDuringProtestScreen extends StatelessWidget {
@@ -7,7 +8,7 @@ class SafetyDuringProtestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Safety During Protest'),
+        title: Text(Languages.of(context).safety_during_protest),
         backgroundColor: Color(0xffA42B2A),
       ),
       body: Column(

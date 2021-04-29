@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nway_oo_revolution/localization/language/languages.dart';
 
 class HeroScreen extends StatefulWidget {
   @override
@@ -49,7 +50,7 @@ class _HeroScreenState extends State<HeroScreen> {
           });
           return Scaffold(
             appBar: AppBar(
-              title: Text('Hero'),
+              title: Text(Languages.of(context).hero),
               backgroundColor: Color(0xffA42B2A),
             ),
             body: Container(
