@@ -37,7 +37,9 @@ dependencies:
   url_launcher: ^5.7.10
   photo_view: ^0.11.1
   audioplayers: 0.17.0
+  animated_text_kit: ^4.2.1
   shared_preferences:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -61,6 +63,9 @@ flutter:
     - family: BottomNavigationIcon
       fonts:
         - asset: assets/fonts/BottomNavigationIcon.ttf
+    - family: Mina
+      fonts:
+        - asset: assets/fonts/Mina-Regular.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

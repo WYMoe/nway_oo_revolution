@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nway_oo_revolution/icon/bottom_navigation_icon.dart';
 import 'package:nway_oo_revolution/localization/language/languages.dart';
+import 'package:nway_oo_revolution/screens/about_us_screen.dart';
 import 'package:nway_oo_revolution/screens/app_drawer.dart';
 import 'package:nway_oo_revolution/screens/info_screen.dart';
 import 'package:nway_oo_revolution/screens/knowledge_screen.dart';

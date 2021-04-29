@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/localization/locale_constant.dart';
+import 'package:nway_oo_revolution/main.dart';
+import 'package:nway_oo_revolution/screens/about_us_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 class AppDrawer extends StatefulWidget {
   @override
   _AppDrawerState createState() => _AppDrawerState();
 }
 
 class _AppDrawerState extends State<AppDrawer> {
+  _launchURL(String linkUrl) async {
+    String url = linkUrl;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   int selectedVal = 0;
 
   setVal(int i) {
@@ -15,9 +28,11 @@ class _AppDrawerState extends State<AppDrawer> {
     });
     Navigator.pop(context);
   }
+
   @override
   void initState() {
     // TODO: implement initState
+
     // if(Languages.of(context).languageName=='English'){
     //   selectedVal = 1;
     // }else if( Languages.of(context).languageName=='မြန်မာ'){
@@ -57,8 +72,8 @@ class _AppDrawerState extends State<AppDrawer> {
                       child: Center(
                         child: Text(
                           Languages.of(context).nway_oo_revolution,
-                          style:
-                              TextStyle(fontSize: 14.0, color: Color(0xffA42B2A)),
+                          style: TextStyle(
+                              fontSize: 14.0, color: Color(0xffA42B2A)),
                         ),
                       ),
                     ),
@@ -72,7 +87,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     return SimpleDialog(
                       children: <Widget>[
                         RadioListTile(
-                          title: Text('English'),
+                            title: Text('English'),
                             value: 1,
                             groupValue: selectedVal,
                             onChanged: (val) {
@@ -80,22 +95,20 @@ class _AppDrawerState extends State<AppDrawer> {
                               setVal(val);
                             }),
                         RadioListTile(
-                            title:Text('မြန်မာ'),
+                            title: Text('မြန်မာ'),
                             value: 2,
                             groupValue: selectedVal,
                             onChanged: (val) {
                               changeLanguage(context, 'my');
                               setVal(val);
-
                             }),
                         RadioListTile(
-                          title: Text('中文'),
+                            title: Text('中文'),
                             value: 3,
                             groupValue: selectedVal,
                             onChanged: (val) {
-                            changeLanguage(context, 'zh');
+                              changeLanguage(context, 'zh');
                               setVal(val);
-
                             }),
                       ],
                     );
@@ -113,21 +126,22 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                _launchURL('https://www.facebook.com/nwayoorevolutionapp');
+              },
               child: Card(
                 child: ListTile(
                   leading: Icon(Icons.sms_rounded, color: Color(0xffA42B2A)),
-                  title: Text(Languages.of(context).contact_us_or_make_suggestion),
+                  title:
+                      Text(Languages.of(context).contact_us_or_make_suggestion),
                 ),
               ),
             ),
             InkWell(
               onTap: () {
-                // Navigator.push(context, MaterialPageRoute(
-                //     builder: (context){
-                //       return WeatherScreen();
-                //     }
-                // ));
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return AboutUsScreen();
+                }));
               },
               child: Card(
                 child: ListTile(
