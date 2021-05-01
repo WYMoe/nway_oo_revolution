@@ -40,7 +40,7 @@ class _MusicScreenState extends State<MusicScreen> {
                 ),
                 body: Center(child: CircularProgressIndicator()));
           }
-          List<MusicItem> cdmHelpList = [];
+          List<MusicTile> musicList = [];
           int i =0;
           snapshot.data.docs.forEach((doc) {
             String composed = doc['composed'];
@@ -53,7 +53,7 @@ class _MusicScreenState extends State<MusicScreen> {
 
           //print(name);
 
-            cdmHelpList.add(MusicItem(
+            musicList.add(MusicTile(
               // id: id,
               photo: photo,
               name: name,
@@ -74,7 +74,7 @@ class _MusicScreenState extends State<MusicScreen> {
                   children: [
                     Expanded(
                       child: ListView.builder(
-                          itemCount: cdmHelpList.length,
+                          itemCount: musicList.length,
                           controller: controller,
                           itemBuilder: (context, index) {
                             double scale = 1.0;
@@ -96,7 +96,7 @@ class _MusicScreenState extends State<MusicScreen> {
                                 child: Align(
                                     heightFactor: 0.7,
                                     alignment: Alignment.topCenter,
-                                    child: cdmHelpList[index]),
+                                    child: musicList[index]),
                               ),
                             );
                           }),
@@ -108,14 +108,14 @@ class _MusicScreenState extends State<MusicScreen> {
   }
 }
 
-class MusicItem extends StatelessWidget {
+class MusicTile extends StatelessWidget {
   final String composed;
   final String id;
   final String link;
   final String name;
   final String photo;
   final String singer;
-  MusicItem(
+  MusicTile(
       {this.composed, this.id, this.link, this.name, this.photo, this.singer});
 
   _launchURL(String linkUrl) async {

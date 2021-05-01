@@ -37,7 +37,7 @@ class _SafetyDuringProtestViewerScreenState extends State<SafetyDuringProtestVie
 
     List<Widget> imgList = [];
     for(int i =0;i<photo.length;i++){
-      imgList.add(Img(photo[i]));
+      imgList.add(SafetyImage(photo[i]));
     }
     return Scaffold(
       appBar:  AppBar(
@@ -69,7 +69,7 @@ class _SafetyDuringProtestViewerScreenState extends State<SafetyDuringProtestVie
                 color: Colors.black87,
                 fontSize: 14,
               ),
-              textAlign: TextAlign.left,
+
             ),
           ),
         ],
@@ -80,9 +80,9 @@ class _SafetyDuringProtestViewerScreenState extends State<SafetyDuringProtestVie
 }
 
 
-class Img extends StatelessWidget {
-  String photo;
-  Img(this.photo);
+class SafetyImage extends StatelessWidget {
+ final  String photo;
+  SafetyImage(this.photo);
   @override
   Widget build(BuildContext context) {
     return Column(

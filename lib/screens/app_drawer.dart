@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nway_oo_revolution/localization/language/languages.dart';
 import 'package:nway_oo_revolution/localization/locale_constant.dart';
-import 'package:nway_oo_revolution/main.dart';
 import 'package:nway_oo_revolution/screens/about_us_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,21 +26,6 @@ class _AppDrawerState extends State<AppDrawer> {
       selectedVal = i;
     });
     Navigator.pop(context);
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-
-    // if(Languages.of(context).languageName=='English'){
-    //   selectedVal = 1;
-    // }else if( Languages.of(context).languageName=='မြန်မာ'){
-    //   selectedVal = 2;
-    // }else if( Languages.of(context).languageName=='中文'){
-    //   selectedVal = 3;
-    //
-    // }
-    super.initState();
   }
 
   @override

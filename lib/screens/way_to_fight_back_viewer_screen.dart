@@ -132,7 +132,7 @@ class _WayToFightBackViewerScreenState extends State<WayToFightBackViewerScreen>
                     color: Colors.black87,
                     fontSize: 15,
                   ),
-                  textAlign: TextAlign.justify,
+
                 ),
               )
             ],

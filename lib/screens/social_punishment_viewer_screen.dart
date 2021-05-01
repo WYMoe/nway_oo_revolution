@@ -57,7 +57,7 @@ class SocialPunishmentViewerScreen extends StatelessWidget {
                     color: Colors.black87,
                     fontSize: 14,
                   ),
-                  textAlign: TextAlign.justify,
+
                 ),
               )],
           ),

@@ -116,102 +116,101 @@ class NewsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => NewsViewerScreen(newsModel)));
-      },
-      child: Container(
-          margin: EdgeInsets.only(bottom: 15),
-          width: MediaQuery.of(context).size.width,
-          child: Container(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 13),
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(6),
-                    bottomLeft: Radius.circular(6)),
+    return Container(
+        margin: EdgeInsets.only(bottom: 15),
+        width: MediaQuery.of(context).size.width,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+          alignment: Alignment.bottomCenter,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(6),
+                bottomLeft: Radius.circular(6)),
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(18.0),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NewsViewerScreen(newsModel)));
+            },
+            child: Card(
+              elevation: 5.0,
+              shadowColor: Colors.white38,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
               ),
-              child: Card(
-                elevation: 5.0,
-                shadowColor: Colors.white38,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      ClipRRect(
-                          borderRadius: BorderRadius.circular(18),
-                          child: Image.network(
-                            newsModel.photo[0],
-                            height: 200,
-                            width: MediaQuery.of(context).size.width,
-                            fit: BoxFit.cover,
-                          )),
-                      SizedBox(
-                        height: 12,
-                      ),  Text(
-                        newsModel.time,
-                        maxLines: 2,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        height: 5.0,
-                      ),
-                      Text(
-                        newsModel.date,
-                        maxLines: 2,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        height: 5.0,
-                      ),
-                      Text(
-                        newsModel.city,
-                        maxLines: 2,
-                        style: TextStyle(
-                            color: Colors.black87,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        newsModel.title,
-                        maxLines: 2,
-                        style: TextStyle(color: Colors.black54, fontSize: 14),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        'see more ...',
-                        style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.blueAccent),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                    ],
-                  ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(18),
+                        child: Image.network(
+                          newsModel.photo[0],
+                          height: 200,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                        )),
+                    SizedBox(
+                      height: 12,
+                    ),  Text(
+                      newsModel.time,
+                      maxLines: 2,
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Text(
+                      newsModel.date,
+                      maxLines: 2,
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Text(
+                      newsModel.city,
+                      maxLines: 2,
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      newsModel.title,
+                      maxLines: 2,
+                      style: TextStyle(color: Colors.black54, fontSize: 14),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      'see more ...',
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.blueAccent),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                  ],
                 ),
               ),
             ),
-          )),
-    );
+          ),
+        ));
   }
 }

@@ -15,7 +15,7 @@
         </intent>
     </queries>
    <application
-        android:label="nway_oo_revolution"
+        android:label="Nway Oo Revolution"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

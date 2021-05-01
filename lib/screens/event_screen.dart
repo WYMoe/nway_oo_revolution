@@ -27,7 +27,7 @@ class EventScreen extends StatelessWidget {
                   if (!snapshot.hasData) {
                     return Center(child: CircularProgressIndicator());
                   }
-                  List<FirstAidTile> firstAidList = [];
+                  List<EventTile> eventList = [];
                   snapshot.data.docs.forEach((doc) {
                    Timestamp datetime=doc['datetime'];
                    String detail = doc['detail'];
@@ -36,11 +36,11 @@ class EventScreen extends StatelessWidget {
                      String id = doc['id'];
 
 
-                    firstAidList.add(FirstAidTile(photo: photo,detail: detail,title: title,datetime: datetime,id: id,));
+                    eventList.add(EventTile(photo: photo,detail: detail,title: title,datetime: datetime,id: id,));
                   });
 
                   return ListView(
-                    children: firstAidList,
+                    children: eventList,
                     physics: BouncingScrollPhysics(),
                   );
                 },
@@ -53,9 +53,9 @@ class EventScreen extends StatelessWidget {
 
 
 
-class FirstAidTile extends StatelessWidget {
+class EventTile extends StatelessWidget {
 
-  FirstAidTile({this.photo,this.detail,this.title,this.datetime,this.id});
+  EventTile({this.photo,this.detail,this.title,this.datetime,this.id});
   final Timestamp datetime;
   final String detail;
   final String photo;
@@ -63,25 +63,27 @@ class FirstAidTile extends StatelessWidget {
   final String id;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => EventViewerScreen(title: title,id: id,) ));
-      },
-      child: Container(
-          margin: EdgeInsets.only(bottom: 15),
-          width: MediaQuery.of(context).size.width,
+    return Container(
+        margin: EdgeInsets.only(bottom: 15),
+        width: MediaQuery.of(context).size.width,
+        child: Container(
           child: Container(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 13),
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(6),
-                    bottomLeft: Radius.circular(6)),
-              ),
+            padding: EdgeInsets.symmetric(horizontal: 13),
+            alignment: Alignment.bottomCenter,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(6),
+                  bottomLeft: Radius.circular(6)),
+            ),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(18.0),
+
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EventViewerScreen(title: title,id: id,) ));
+              },
               child: Card(
                 elevation: 5.0,
                 shadowColor: Colors.white38,
@@ -126,7 +128,7 @@ class FirstAidTile extends StatelessWidget {
                 ),
               ),
             ),
-          )),
-    );
+          ),
+        ));
   }
 }

@@ -45,7 +45,7 @@ class _BoycottCategoryScreenState extends State<BoycottCategoryScreen> {
                 ),
                 body: Center(child: CircularProgressIndicator()));
           }
-          List<BoycottItem> cdmHelpList = [];
+          List<BoycottCategoryTile> boycottCategoryList = [];
           snapshot.data.docs.forEach((doc) {
             String id = doc['id'];
             String name = doc['name'];
@@ -54,7 +54,7 @@ class _BoycottCategoryScreenState extends State<BoycottCategoryScreen> {
             String detail = doc['detail'];
 
             //  print('name:' + cdmHelpModel.name);
-            cdmHelpList.add(BoycottItem(id, name, type, photo, detail));
+            boycottCategoryList.add(BoycottCategoryTile(id, name, type, photo, detail));
           });
 
           return Scaffold(
@@ -68,7 +68,7 @@ class _BoycottCategoryScreenState extends State<BoycottCategoryScreen> {
                   children: [
                     Expanded(
                       child: ListView.builder(
-                          itemCount: cdmHelpList.length,
+                          itemCount: boycottCategoryList.length,
                           controller: controller,
                           itemBuilder: (context, index) {
                             double scale = 1.0;
@@ -90,7 +90,7 @@ class _BoycottCategoryScreenState extends State<BoycottCategoryScreen> {
                                 child: Align(
                                     heightFactor: 0.7,
                                     alignment: Alignment.topCenter,
-                                    child: cdmHelpList[index]),
+                                    child: boycottCategoryList[index]),
                               ),
                             );
                           }),
@@ -102,13 +102,13 @@ class _BoycottCategoryScreenState extends State<BoycottCategoryScreen> {
   }
 }
 
-class BoycottItem extends StatelessWidget {
+class BoycottCategoryTile extends StatelessWidget {
   final String id;
   final String name;
   final String type;
   final String photo;
   final String detail;
-  BoycottItem(this.id, this.name, this.type, this.photo, this.detail);
+  BoycottCategoryTile(this.id, this.name, this.type, this.photo, this.detail);
   @override
   Widget build(BuildContext context) {
     // List<NetworkImage> networkImage = [];

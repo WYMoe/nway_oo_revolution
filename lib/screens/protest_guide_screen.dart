@@ -16,61 +16,73 @@ class ProtestGuideScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: TextButton(
-              onPressed: (){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => FirstAidScreen()));
-              },
-              child: Container(
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(20.0),
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FirstAidScreen()));
+                },
+                child: Container(
 
-                  margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 7,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  borderRadius: BorderRadius.circular(20.0),
-                  color: Colors.red
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // Icon(Icons.add,
-                      //   color: Colors.white,
-                      //   size: MediaQuery.of(context).size.width*0.2,),
-                      Text(Languages.of(context).first_aid,style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600),),
-
-                    ],
+                    margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 7,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: Colors.red
                   ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Icon(Icons.add,
+                        //   color: Colors.white,
+                        //   size: MediaQuery.of(context).size.width*0.2,),
+                        Text(Languages.of(context).first_aid,style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600),),
 
+                      ],
+                    ),
+
+                  ),
                 ),
               ),
             ),
           ),
-          Expanded(child: TextButton(
-              onPressed: (){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SafetyDuringProtestScreen()));
-              },
-              child: ProtestItem(Languages.of(context).safety_during_protest))),
-          Expanded(child: TextButton( onPressed: (){
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => WayToFightBackScreen()));
-          },child: ProtestItem(Languages.of(context).way_to_fight_back))),
+          Expanded(child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: InkWell(
+                borderRadius: BorderRadius.circular(20.0),
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SafetyDuringProtestScreen()));
+                },
+                child: ProtestTile(Languages.of(context).safety_during_protest)),
+          )),
+          Expanded(child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: InkWell(
+                borderRadius: BorderRadius.circular(20.0),onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => WayToFightBackScreen()));
+            },child: ProtestTile(Languages.of(context).way_to_fight_back)),
+          )),
           Expanded(
             child: SizedBox(
               height: MediaQuery.of(context).size.height*0.2,
@@ -83,9 +95,9 @@ class ProtestGuideScreen extends StatelessWidget {
 
 }
 
-class ProtestItem extends StatelessWidget {
+class ProtestTile extends StatelessWidget {
   final String title;
-  ProtestItem(this.title);
+  ProtestTile(this.title);
   @override
   Widget build(BuildContext context) {
 

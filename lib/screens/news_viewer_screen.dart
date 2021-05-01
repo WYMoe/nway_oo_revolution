@@ -10,19 +10,17 @@ class NewsViewerScreen extends StatefulWidget {
   NewsViewerScreen(this.newsModel);
   @override
   _NewsViewerScreenState createState() => _NewsViewerScreenState(
-    township: newsModel.township,
-    time: newsModel.time,
-    title: newsModel.title,
-    photo: newsModel.photo,
-    dateTime: newsModel.dateTime,
-    city: newsModel.city,
-    date: newsModel.date,
-    detail: newsModel.detail
-  );
+      township: newsModel.township,
+      time: newsModel.time,
+      title: newsModel.title,
+      photo: newsModel.photo,
+      dateTime: newsModel.dateTime,
+      city: newsModel.city,
+      date: newsModel.date,
+      detail: newsModel.detail);
 }
 
 class _NewsViewerScreenState extends State<NewsViewerScreen> {
-
   final String city;
   final String date;
   final Timestamp dateTime;
@@ -31,9 +29,17 @@ class _NewsViewerScreenState extends State<NewsViewerScreen> {
   final String title;
   final String township;
   List<dynamic> photo = [];
-  _NewsViewerScreenState({this.city,this.date,this.dateTime,this.detail,this.photo,this.title,this.time,this.township});
+  _NewsViewerScreenState(
+      {this.city,
+      this.date,
+      this.dateTime,
+      this.detail,
+      this.photo,
+      this.title,
+      this.time,
+      this.township});
 
-  int _currentIndex=0;
+  int _currentIndex = 0;
 
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -42,30 +48,27 @@ class _NewsViewerScreenState extends State<NewsViewerScreen> {
     }
     return result;
   }
-  String convertNewLine(String content) {
 
+  String convertNewLine(String content) {
     return content.replaceAll(r'\n', '\n');
   }
+
   @override
   Widget build(BuildContext context) {
-    List cardList=[
-
-    ];
-    for(int i =0; i<photo.length;i++){
-      cardList.add(
-        Item(photo[i],photo)
-      );
+    List cardList = [];
+    for (int i = 0; i < photo.length; i++) {
+      cardList.add(Item(photo[i], photo));
     }
     return Scaffold(
-      appBar: AppBar(
-        title: Text(Languages.of(context).nway_oo_revolution),
-        backgroundColor: Color(0xffA42B2A),
-      ),
+        appBar: AppBar(
+          title: Text(Languages.of(context).nway_oo_revolution),
+          backgroundColor: Color(0xffA42B2A),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Container(
-                height: MediaQuery.of(context).size.height*0.3,
+                height: MediaQuery.of(context).size.height * 0.3,
                 child: CarouselSlider(
                   options: CarouselOptions(
                     //height: 300.0,
@@ -78,33 +81,32 @@ class _NewsViewerScreenState extends State<NewsViewerScreen> {
                     scrollPhysics: BouncingScrollPhysics(),
                     aspectRatio: 2.0,
                     onPageChanged: (index, reason) {
-                      
                       setState(() {
                         _currentIndex = index;
                       });
                     },
                   ),
-                  items: cardList.map((card){
-                    return Builder(
-                        builder:(BuildContext context){
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 15.0,left: 5.0,right: 5.0),
-                            child: GestureDetector(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context){
-                                  return PhotoViewScreen(photo[_currentIndex ]);
-                                }));
-                              },
-                              child: Container(
-                                height: MediaQuery.of(context).size.height*0.6,
-                                width: MediaQuery.of(context).size.width,
-                                child: card
-                              ),
-                            ),
-                          );
-                        }
-                    );
-                  }).toList(),            ),
+                  items: cardList.map((card) {
+                    return Builder(builder: (BuildContext context) {
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            top: 15.0, left: 5.0, right: 5.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return PhotoViewScreen(photo[_currentIndex]);
+                            }));
+                          },
+                          child: Container(
+                              height: MediaQuery.of(context).size.height * 0.6,
+                              width: MediaQuery.of(context).size.width,
+                              child: card),
+                        ),
+                      );
+                    });
+                  }).toList(),
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -112,10 +114,13 @@ class _NewsViewerScreenState extends State<NewsViewerScreen> {
                   return Container(
                     width: 10.0,
                     height: 10.0,
-                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                    margin:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: _currentIndex == index ? Color(0xffAB381F) : Colors.grey,
+                      color: _currentIndex == index
+                          ? Color(0xffAB381F)
+                          : Colors.grey,
                     ),
                   );
                 }),
@@ -127,62 +132,64 @@ class _NewsViewerScreenState extends State<NewsViewerScreen> {
                 this.title,
                 maxLines: 2,
                 style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,),
-              textAlign: TextAlign.center,
+                  color: Colors.black87,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
               ),
               Column(
-
                 children: [
                   SizedBox(
                     height: 8,
                   ),
                   Text(
-                    this.date+'  '+this.time,
+                    this.date + '  ' + this.time,
                     maxLines: 2,
                     style: TextStyle(
                         color: Colors.black87,
                         fontSize: 14,
                         fontWeight: FontWeight.w500),
-                    textAlign: TextAlign.right,),SizedBox(
+                    textAlign: TextAlign.right,
+                  ),
+                  SizedBox(
                     height: 8,
-                  ),Text(
+                  ),
+                  Text(
                     this.city,
                     maxLines: 2,
                     style: TextStyle(
                         color: Colors.black87,
                         fontSize: 14,
                         fontWeight: FontWeight.w500),
-                    textAlign: TextAlign.right,),SizedBox(
+                    textAlign: TextAlign.right,
+                  ),
+                  SizedBox(
                     height: 8,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
-                     convertNewLine(this.detail),
-
+                      convertNewLine(this.detail),
                       style: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 14,
-                          ),
-                      textAlign: TextAlign.justify,
+                        color: Colors.black87,
+                        fontSize: 14,
                       ),
+
+                    ),
                   ),
                 ],
               )
             ],
-
           ),
-        )
-    );
+        ));
   }
 }
 
 class Item extends StatelessWidget {
   final String url;
   final List<dynamic> photo;
-  Item(this.url,this.photo);
+  Item(this.url, this.photo);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -195,10 +202,9 @@ class Item extends StatelessWidget {
       //   ),
       // ),
 
-
       child: SingleChildScrollView(
         child: Stack(
-        //  mainAxisAlignment: MainAxisAlignment.center,
+          //  mainAxisAlignment: MainAxisAlignment.center,
           alignment: Alignment.topRight,
 
           children: <Widget>[
@@ -206,25 +212,22 @@ class Item extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 child: Image.network(
                   this.url,
-                  height:  MediaQuery.of(context).size.height*0.23,
+                  height: MediaQuery.of(context).size.height * 0.23,
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.cover,
                 )),
             Container(
               padding: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
-                color: Colors.white30,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(18))
-
-
-              ),
+                  color: Colors.white30,
+                  borderRadius:
+                      BorderRadius.only(topRight: Radius.circular(18))),
               child: Text('Tap to View',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
                       fontWeight: FontWeight.w500)),
             )
-
           ],
         ),
       ),

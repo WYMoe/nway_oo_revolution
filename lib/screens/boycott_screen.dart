@@ -40,7 +40,7 @@ class _BoycottScreenState extends State<BoycottScreen> {
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
           }
-          List<BoycottItem> cdmHelpList = [];
+          List<BoycottTile> boycottList = [];
           snapshot.data.docs.forEach((doc) {
             String id = doc['id'];
             String name = doc['name'];
@@ -48,7 +48,7 @@ class _BoycottScreenState extends State<BoycottScreen> {
             String photo = doc['photo'];
 
             //  print('name:' + cdmHelpModel.name);
-            cdmHelpList.add(BoycottItem(id,name,number,photo));
+            boycottList.add(BoycottTile(id,name,number,photo));
           });
 
           return Scaffold(
@@ -62,7 +62,7 @@ class _BoycottScreenState extends State<BoycottScreen> {
                   children: [
                     Expanded(
                       child: ListView.builder(
-                          itemCount: cdmHelpList.length,
+                          itemCount: boycottList.length,
                           controller: controller,
                           itemBuilder: (context,index){
                             double scale = 1.0;
@@ -83,7 +83,7 @@ class _BoycottScreenState extends State<BoycottScreen> {
                                 child: Align(
                                     heightFactor: 0.7,
                                     alignment: Alignment.topCenter,
-                                    child: cdmHelpList[index]),
+                                    child: boycottList[index]),
                               ),
                             );
                           }),
@@ -96,12 +96,12 @@ class _BoycottScreenState extends State<BoycottScreen> {
   }
 }
 
-class BoycottItem extends StatelessWidget {
+class BoycottTile extends StatelessWidget {
   final String id;
   final String name;
   final String number;
   final String photo;
-  BoycottItem(this.id,this.name,this.number,this.photo);
+  BoycottTile(this.id,this.name,this.number,this.photo);
   @override
   Widget build(BuildContext context) {
     // List<NetworkImage> networkImage = [];

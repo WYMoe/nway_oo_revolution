@@ -27,7 +27,7 @@ class _SocialPunishmentScreenState extends State<SocialPunishmentScreen> {
           if (!snapshot.hasData) {
             return Center(child: CircularProgressIndicator());
           }
-          List<SocialPunishmentTile> safetyList = [];
+          List<SocialPunishmentTile> socialPunishmentList = [];
           snapshot.data.docs.forEach((doc) {
             String title = doc['name'];
             String photo = doc['photo'];
@@ -35,10 +35,10 @@ class _SocialPunishmentScreenState extends State<SocialPunishmentScreen> {
             String id = doc['id'];
             String type = doc['type'];
             if (_val == 'All') {
-              safetyList
+              socialPunishmentList
                   .add(SocialPunishmentTile(photo, title, detail, id, type));
             } else if (_val ==type) {
-              safetyList
+              socialPunishmentList
                   .add(SocialPunishmentTile(photo, title, detail, id, type));
             }
           });
@@ -99,7 +99,7 @@ class _SocialPunishmentScreenState extends State<SocialPunishmentScreen> {
                   ),
                 ),
                 Column(
-                  children: safetyList,
+                  children: socialPunishmentList,
                 )
               ],
             ),
@@ -118,25 +118,27 @@ class SocialPunishmentTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => SocialPunishmentViewerScreen( photo, name,detail, id,type,)));
-      },
-      child: Container(
-          margin: EdgeInsets.only(bottom: 15),
-          width: MediaQuery.of(context).size.width,
+    return Container(
+        margin: EdgeInsets.only(bottom: 15),
+        width: MediaQuery.of(context).size.width,
+        child: Container(
           child: Container(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 13),
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(6),
-                    bottomLeft: Radius.circular(6)),
-              ),
+            padding: EdgeInsets.symmetric(horizontal: 13),
+            alignment: Alignment.bottomCenter,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(6),
+                  bottomLeft: Radius.circular(6)),
+            ),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(18.0),
+
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SocialPunishmentViewerScreen( photo, name,detail, id,type,)));
+              },
               child: Card(
                 elevation: 5.0,
                 shadowColor: Colors.white38,
@@ -176,7 +178,7 @@ class SocialPunishmentTile extends StatelessWidget {
                 ),
               ),
             ),
-          )),
-    );
+          ),
+        ));
   }
 }

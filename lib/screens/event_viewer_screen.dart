@@ -27,7 +27,7 @@ class EventViewerScreen extends StatelessWidget {
                   if (!snapshot.hasData) {
                     return Center(child: CircularProgressIndicator());
                   }
-                  List<EventViewerTile> firstAidViewerList = [];
+                  List<EventViewerTile> eventViewrList = [];
                   snapshot.data.docs.forEach((DocumentSnapshot doc) {
                     String detail = doc['detail'];
                     String photo = doc['photo'];
@@ -37,11 +37,11 @@ class EventViewerScreen extends StatelessWidget {
                       title = doc['title'];
                     }
 
-                    firstAidViewerList.add(EventViewerTile(photo, title, detail));
+                    eventViewrList.add(EventViewerTile(photo, title, detail));
                   });
 
                   return ListView(
-                    children: firstAidViewerList,
+                    children: eventViewrList,
                     physics: BouncingScrollPhysics(),
                   );
                 },

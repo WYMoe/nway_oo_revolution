@@ -77,33 +77,35 @@ class CRPHTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => CRPHViewerScreen(
-                      provelink: provelink,
-                      time: time,
-                      date: date,
-                      detail: detail,
-                      dateTime: datetime,
-                      title: title,
-                      photo: photo,
-                    )));
-      },
-      child: Container(
-          margin: EdgeInsets.only(bottom: 15),
-          width: MediaQuery.of(context).size.width,
+    return Container(
+        margin: EdgeInsets.only(bottom: 15),
+        width: MediaQuery.of(context).size.width,
+        child: Container(
           child: Container(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 13),
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(6),
-                    bottomLeft: Radius.circular(6)),
-              ),
+            padding: EdgeInsets.symmetric(horizontal: 13),
+            alignment: Alignment.bottomCenter,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(6),
+                  bottomLeft: Radius.circular(6)),
+            ),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(18.0),
+
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CRPHViewerScreen(
+                          provelink: provelink,
+                          time: time,
+                          date: date,
+                          detail: detail,
+                          dateTime: datetime,
+                          title: title,
+                          photo: photo,
+                        )));
+              },
               child: Card(
                 elevation: 5.0,
                 shadowColor: Colors.white38,
@@ -164,7 +166,7 @@ class CRPHTile extends StatelessWidget {
                 ),
               ),
             ),
-          )),
-    );
+          ),
+        ));
   }
 }

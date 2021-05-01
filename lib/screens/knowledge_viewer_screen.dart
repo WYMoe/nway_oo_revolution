@@ -27,7 +27,7 @@ class KnowledgeViewerScreen extends StatelessWidget {
                   if (!snapshot.hasData) {
                     return Center(child: CircularProgressIndicator());
                   }
-                  List<EventViewerTile> firstAidViewerList = [];
+                  List<KnowledgeViewerTile> knowledgeViewerList = [];
                   snapshot.data.docs.forEach((DocumentSnapshot doc) {
                     String detail = doc['detail'];
                     String photo = doc['photo'];
@@ -37,11 +37,11 @@ class KnowledgeViewerScreen extends StatelessWidget {
                       title = doc['title'];
                     }
 
-                    firstAidViewerList.add(EventViewerTile(photo, title, detail));
+                    knowledgeViewerList.add(KnowledgeViewerTile(photo, title, detail));
                   });
 
                   return ListView(
-                    children: firstAidViewerList,
+                    children: knowledgeViewerList,
                     physics: BouncingScrollPhysics(),
                   );
                 },
@@ -52,7 +52,7 @@ class KnowledgeViewerScreen extends StatelessWidget {
   }
 }
 
-class EventViewerTile extends StatelessWidget {
+class KnowledgeViewerTile extends StatelessWidget {
   String photo;
   String title;
   String detail;
@@ -60,7 +60,7 @@ class EventViewerTile extends StatelessWidget {
     print("Converting");
     return content.replaceAll(r'\n', '\n');
   }
-  EventViewerTile(this.photo, this.title, this.detail);
+  KnowledgeViewerTile(this.photo, this.title, this.detail);
   @override
   Widget build(BuildContext context) {
     return Column(
