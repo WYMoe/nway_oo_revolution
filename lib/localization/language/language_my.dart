@@ -32,7 +32,7 @@ class LanguageMy extends Languages{
 
   @override
   // TODO: implement crph_movement
-  String get crph_movement => 'CRPH လှုပ်ရှားမှုမျာ';
+  String get crph_movement => 'CRPH လှုပ်ရှားမှုများ';
 
   @override
   // TODO: implement event
@@ -44,7 +44,7 @@ class LanguageMy extends Languages{
 
   @override
   // TODO: implement hero
-  String get hero => 'နွေဦးတော်လှန်ရေး သူရဲကောင်းမျာ';
+  String get hero => 'နွေဦးတော်လှန်ရေး သူရဲကောင်းများ';
 
   @override
   // TODO: implement music_playlist

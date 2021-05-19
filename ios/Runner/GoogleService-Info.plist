@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>16282946070-5l6cja8vmsu4od3j21mqgh260vcd7jbu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.16282946070-5l6cja8vmsu4od3j21mqgh260vcd7jbu</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>16282946070-vvem9qast2bdiv19pdju66ihfe8spdc7.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAjqXS57rKKnWOuGRTRGLpdNlOiGtAIRg8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>16282946070</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.nwayOoRevolution</string>
+	<key>PROJECT_ID</key>
+	<string>nwayoorevolution-a7bea</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nwayoorevolution-a7bea.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:16282946070:ios:d87d87bd28f2543b2ec337</string>
+</dict>
+</plist>
